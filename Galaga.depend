@@ -391,3 +391,7 @@
 	<string>
 	<vector>
 
+1503396475 source:c:\users\jorgeruben\github\galaga\main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+
