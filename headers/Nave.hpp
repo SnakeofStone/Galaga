@@ -6,4 +6,6 @@ private:
     int posX;
 public:
     Nave();
+    void MovePosX();
+    void MoveNegX();
 }
