@@ -18,7 +18,7 @@ int main()
 
     //////// Define and declare textures and sprites////////////
     sf::Texture nave, alien1, alien2, alien3, alien4;
-    nave.loadFromFile("images/nave.png");
+    nave.loadFromFile("assets/images/nave.png");
 
     sf::Sprite sNave(nave), sAlien1(alien1), sAlien2(alien2),
         sAlien3(alien3), sAlien4(alien4);
