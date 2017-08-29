@@ -11,8 +11,6 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(windowDimensions[0], windowDimensions[1]), "Galaga");
     window.setFramerateLimit(60);
-    //sf::CircleShape shape(100.f);
-    //shape.setFillColor(sf::Color::Green);
 
     //////// Define and declare textures and sprites////////////
     sf::Texture alien1, alien2, alien3, alien4;
@@ -21,8 +19,8 @@ int main()
     // class and pass the image path
     Nave ship("assets/images/nave.png");
 
-    sf::Sprite sAlien1(alien1), sAlien2(alien2),
-        sAlien3(alien3), sAlien4(alien4);
+//    sf::Sprite sAlien1(alien1), sAlien2(alien2),
+//        sAlien3(alien3), sAlien4(alien4);
 
     ///////// Main game loop /////////
     while (window.isOpen())

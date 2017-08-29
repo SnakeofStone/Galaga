@@ -1,10 +1,13 @@
 #include "../headers/Nave.hpp"
 
-using namespace std;
 
 Nave::Nave(std::string texturePath)
 {
-    this->nave.loadFromFile(texturePath);
+    if(!nave.loadFromFile(texturePath))
+    {
+            exit(0);
+    }
+    sNave.setTexture(nave);
     posX = 720/2 - sNave.getLocalBounds().width;
     posY = 720 - sNave.getLocalBounds().height;
 }
@@ -12,13 +15,13 @@ Nave::Nave(std::string texturePath)
 void Nave::MovePosX(int x)
 {
     posX += x;
-    cout << posX << endl;
+//    cout << posX << endl;
 }
 
 void Nave::MoveNegX(int x)
 {
     posX -= x;
-    cout << posX << endl;
+//    cout << posX << endl;
 }
 
 sf::Sprite Nave::returnSNave()
