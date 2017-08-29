@@ -1,11 +1,24 @@
+#pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
-static class Nave
+using namespace std;
+
+class Nave
 {
 private:
-    int posX;
+    // Private properties declaration
+    sf::Texture nave;
+    sf::Sprite sNave;
+    int posX, posY;
+
 public:
-    Nave();
-    void MovePosX();
-    void MoveNegX();
-}
+    // Method declaration
+    Nave(std::string texturePath);
+    void MovePosX(int x);
+    void MoveNegX(int x);
+    sf::Sprite returnSNave();
+    void setSNavePosition();
+    void setPosX(int x);
+    void checkXBounds(sf::Vector2u windowSize);
+};

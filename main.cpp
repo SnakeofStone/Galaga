@@ -1,34 +1,35 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "headers/Nave.hpp"
 
-struct dimensions
-{
-    int x, y;
-} windowDimensions;
+using namespace std;
 
 int main()
 {
-    windowDimensions.x = 720;
-    windowDimensions.y = 720;
+    int windowDimensions[2] = {720, 720};
+    int moveX = 5;
 
-    sf::RenderWindow window(sf::VideoMode(windowDimensions.x, windowDimensions.y), "Galaga");
+    sf::RenderWindow window(sf::VideoMode(windowDimensions[0], windowDimensions[1]), "Galaga");
     window.setFramerateLimit(60);
     //sf::CircleShape shape(100.f);
     //shape.setFillColor(sf::Color::Green);
 
     //////// Define and declare textures and sprites////////////
-    sf::Texture nave, alien1, alien2, alien3, alien4;
-    nave.loadFromFile("images/nave.png");
+    sf::Texture alien1, alien2, alien3, alien4;
 
-    sf::Sprite sNave(nave), sAlien1(alien1), sAlien2(alien2),
+    // Call the constructor of the Nave
+    // class and pass the image path
+    Nave ship("assets/images/nave.png");
+
+    sf::Sprite sAlien1(alien1), sAlien2(alien2),
         sAlien3(alien3), sAlien4(alien4);
 
     //////// Define the spacecraft initial position /////////
 
     sf::Vector2u windowSize = window.getSize();
 
-    int xPos = windowSize.x/2 - sNave.getLocalBounds().width,
-        yPos = windowSize.y - sNave.getLocalBounds().height;
+    //int xPos = windowSize.x/2 - Nave::returnSNave().getLocalBounds().width,
+    //   yPos = windowSize.y - Nave::returnSNave().getLocalBounds().height;
 
     ///////// Main game loop /////////
     while (window.isOpen())
@@ -49,25 +50,20 @@ int main()
         ///// Moving the spaceship i the x axis ///////
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            xPos += 5;
+            ship.MovePosX(moveX);
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            xPos -= 5;
+            ship.MoveNegX(moveX);
 
-        /////// Check if it is in bounds ////////
-        if(xPos < 0)
-            xPos = 0;
-
-        if(xPos > windowSize.x - sNave.getGlobalBounds().width)
-            xPos = windowSize.x - sNave.getGlobalBounds().width;
+        ship.checkXBounds(windowSize);
 
         ////// Set the position of the spacecraft ////////
-        sNave.setPosition(xPos, yPos);
+        ship.setSNavePosition();
 
         ////// Clear the window and draw and display everything /////////
         window.clear(sf::Color::Black);
 
-        window.draw(sNave);
+        window.draw(ship.returnSNave());
         //window.draw(shape);
 
         window.display();
