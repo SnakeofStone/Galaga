@@ -391,15 +391,15 @@
 	<string>
 	<vector>
 
-1503971720 source:c:\users\jorgeruben\github\galaga\main.cpp
+1503973018 source:c:\users\jorgeruben\github\galaga\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"headers/Nave.hpp"
 
-1503971694 source:c:\users\jorgeruben\github\galaga\source\nave.cpp
+1503973018 source:c:\users\jorgeruben\github\galaga\source\nave.cpp
 	"../headers/Nave.hpp"
 
-1503971516 c:\users\jorgeruben\github\galaga\headers\nave.hpp
+1503973018 c:\users\jorgeruben\github\galaga\headers\nave.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 

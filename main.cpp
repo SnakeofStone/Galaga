@@ -6,9 +6,11 @@ using namespace std;
 
 int main()
 {
+    // Initiate simple properties for later use on the creation of the main window
     int windowDimensions[2] = {720, 720};
     int moveX = 5;
 
+    // Set the configuration on the main window
     sf::RenderWindow window(sf::VideoMode(windowDimensions[0], windowDimensions[1]), "Galaga");
     window.setFramerateLimit(60);
 
@@ -46,6 +48,7 @@ int main()
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             ship.MoveNegX(moveX);
 
+        // Check bounds to avoid the ship getting off screen
         ship.checkXBounds(window.getSize());
 
         ////// Set the position of the spacecraft ////////
@@ -54,9 +57,11 @@ int main()
         ////// Clear the window and draw and display everything /////////
         window.clear(sf::Color::Black);
 
+        // Draw the Nave sprite
         window.draw(ship.returnSNave());
         //window.draw(shape);
 
+        // Display the window
         window.display();
     }
 
