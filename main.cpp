@@ -24,13 +24,6 @@ int main()
     sf::Sprite sAlien1(alien1), sAlien2(alien2),
         sAlien3(alien3), sAlien4(alien4);
 
-    //////// Define the spacecraft initial position /////////
-
-    sf::Vector2u windowSize = window.getSize();
-
-    //int xPos = windowSize.x/2 - Nave::returnSNave().getLocalBounds().width,
-    //   yPos = windowSize.y - Nave::returnSNave().getLocalBounds().height;
-
     ///////// Main game loop /////////
     while (window.isOpen())
     {
@@ -55,7 +48,7 @@ int main()
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             ship.MoveNegX(moveX);
 
-        ship.checkXBounds(windowSize);
+        ship.checkXBounds(window.getSize());
 
         ////// Set the position of the spacecraft ////////
         ship.setSNavePosition();
