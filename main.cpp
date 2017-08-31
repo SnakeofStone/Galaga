@@ -11,15 +11,32 @@ int main()
     int moveX = 5;
 
     // Set the configuration on the main window
-    sf::RenderWindow window(sf::VideoMode(windowDimensions[0], windowDimensions[1]), "Galaga");
+    sf::RenderWindow window(sf::VideoMode(windowDimensions[0], windowDimensions[1])
+                            , "Galaga"); //, sf::Style::Fullscreen
     window.setFramerateLimit(60);
 
     //////// Define and declare textures and sprites////////////
     sf::Texture alien1, alien2, alien3, alien4;
 
-    // Call the constructor of the Nave
-    // class and pass the image path
-    Nave ship("assets/images/nave.png");
+    // Set the background texture and sprite
+//    sf::Texture background;
+//    background.loadFromFile("assets/images/fondo3.png");
+
+//    sf::Sprite sBackground(background);
+
+    // Create a rectangle shape the size of the background and set the background
+
+    sf::Texture background;
+    sf::Texture* backPointer = &background;
+    background.loadFromFile("assets/images/fondo1.png");
+
+    sf::RectangleShape rectangleBackground(sf::Vector2f(window.getSize()));
+    rectangleBackground.setTexture(backPointer);
+
+    // Call the constructor of the Nave class and pass the image path
+//  Nave ship("assets/images/nave.png");
+//  Nave ship("assets/images/nave.png", windowDimensions);
+    Nave ship("assets/images/nave.png", window.getSize());
 
 //    sf::Sprite sAlien1(alien1), sAlien2(alien2),
 //        sAlien3(alien3), sAlien4(alien4);
@@ -48,6 +65,9 @@ int main()
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             ship.MoveNegX(moveX);
 
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+            continue;
+
         // Check bounds to avoid the ship getting off screen
         ship.checkXBounds(window.getSize());
 
@@ -57,9 +77,12 @@ int main()
         ////// Clear the window and draw and display everything /////////
         window.clear(sf::Color::Black);
 
+        // Draw the background
+        //window.draw(sBackground);
+        window.draw(rectangleBackground);
+
         // Draw the Nave sprite
         window.draw(ship.returnSNave());
-        //window.draw(shape);
 
         // Display the window
         window.display();

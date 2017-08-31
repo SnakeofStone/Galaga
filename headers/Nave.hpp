@@ -13,8 +13,13 @@ private:
     int posX, posY;
 
 public:
-    // Method declaration
+    //////// Method declaration ///////////
+    // Constructor declaration
     Nave(std::string texturePath);
+    Nave(std::string texturePath, int windowSize[]);
+    Nave(std::string texturePath, sf::Vector2u windowSize);
+
+    // Other method declaration
     void MovePosX(int x);
     void MoveNegX(int x);
     sf::Sprite returnSNave();
