@@ -1,6 +1,5 @@
 #include "../headers/Nave.hpp"
 
-
 Nave::Nave(std::string texturePath)
 {
     if(!nave.loadFromFile(texturePath))
@@ -8,7 +7,7 @@ Nave::Nave(std::string texturePath)
             exit(0);
     }
     sNave.setTexture(nave);
-    posX = 720/2 - sNave.getLocalBounds().width;
+    posX = 720/2 - sNave.getLocalBounds().width/2;
     posY = 720 - sNave.getLocalBounds().height;
 }
 
@@ -40,12 +39,6 @@ void Nave::MovePosX(int x)
 //    cout << posX << endl;
 }
 
-void Nave::MoveNegX(int x)
-{
-    posX -= x;
-//    cout << posX << endl;
-}
-
 sf::Sprite Nave::returnSNave()
 {
     return Nave::sNave;
@@ -64,9 +57,30 @@ void Nave::setPosX(int x)
 void Nave::checkXBounds(sf::Vector2u windowSize)
 {
     /////// Check if it is in bounds ////////
-    if(Nave::posX < 0 + 25)
-        Nave::setPosX(0+25);
+    if(Nave::posX < 25)
+        Nave::setPosX(25);
+//        Nave::posX = 25;
 
     if(Nave::posX > windowSize.x - Nave::returnSNave().getGlobalBounds().width - 25)
         Nave::setPosX(windowSize.x - Nave::returnSNave().getGlobalBounds().width - 25);
+}
+
+void Nave::PrintDetails()
+{
+    cout << "Ship positions:" << endl;
+    cout << "X position: " << posX << endl;
+    cout << "Y position: " << posY << endl;
+}
+
+void Nave::Fire()
+{
+    sf::Texture proyectile;
+    sf::Sprite sProyectile;
+
+    if(!proyectile.loadFromFile("assets/images/proyectile.png"))
+    {
+        exit(0);
+    }
+    sProyectile.setTexture(proyectile);
+    sProyectile.setPosition(50.0, 50.0);
 }
