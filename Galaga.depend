@@ -391,16 +391,16 @@
 	<string>
 	<vector>
 
-1514526785 source:c:\users\jorgeruben\github\galaga\main.cpp
+1521750740 source:c:\users\jorgeruben\github\galaga\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"headers/Nave.hpp"
 	"headers/Alien.hpp"
 
-1516064208 source:c:\users\jorgeruben\github\galaga\source\nave.cpp
+1521750902 source:c:\users\jorgeruben\github\galaga\source\nave.cpp
 	"../headers/Nave.hpp"
 
-1515021747 c:\users\jorgeruben\github\galaga\headers\nave.hpp
+1521750341 c:\users\jorgeruben\github\galaga\headers\nave.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 
@@ -409,11 +409,11 @@
 	<iostream>
 	"headers/Nave.hpp"
 
-1504495892 source:c:\users\jorgeruben\github\galaga\source\alien.cpp
+1517121436 source:c:\users\jorgeruben\github\galaga\source\alien.cpp
 	"../headers/Alien.hpp"
 	<time.h>
 
-1504495892 c:\users\jorgeruben\github\galaga\headers\alien.hpp
+1517121436 c:\users\jorgeruben\github\galaga\headers\alien.hpp
 	<SFML/Graphics.hpp>
 
 1514519319 source:c:\users\jorgeruben\github\galaga\source\proyectile.cpp

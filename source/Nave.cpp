@@ -72,15 +72,24 @@ void Nave::PrintDetails()
     cout << "Y position: " << posY << endl;
 }
 
-void Nave::Fire()
+sf::Sprite Nave::Fire()
 {
     sf::Texture proyectile;
     sf::Sprite sProyectile;
 
+    setShot(proyectile, sProyectile);
+
+    return sProyectile;
+}
+
+void Nave::setShot(sf::Texture& proyectile, sf::Sprite& sProyectile)
+{
     if(!proyectile.loadFromFile("assets/images/proyectile.png"))
     {
         exit(0);
     }
     sProyectile.setTexture(proyectile);
-    sProyectile.setPosition(50.0, 50.0);
+    sProyectile.setPosition(50.0, returnSNave().getGlobalBounds().height);
+    cout << returnSNave().getGlobalBounds().height << endl;
+//    sProyectile.setPosition(50.0, 50.0);
 }
