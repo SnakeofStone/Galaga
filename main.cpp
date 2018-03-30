@@ -15,7 +15,7 @@ int main()
     window.setFramerateLimit(60);
 
     //////// Define and declare textures and sprites////////////
-<<<<<<< HEAD
+//<<<<<<< HEAD
     sf::Texture nave, alien1, alien2, alien3, alien4;
     if (!nave.loadFromFile("assets/images/nave.png"))
     {
@@ -25,9 +25,9 @@ int main()
 
     sf::Sprite sNave(nave), sAlien1(alien1), sAlien2(alien2),
         sAlien3(alien3), sAlien4(alien4);
-=======
-    sf::Texture alien1, alien2, alien3, alien4;
->>>>>>> intoClasses
+//=======
+//    sf::Texture alien1, alien2, alien3, alien4;
+//>>>>>>> intoClasses*/
 
     // Call the constructor of the Nave
     // class and pass the image path
