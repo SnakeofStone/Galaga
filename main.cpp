@@ -65,7 +65,7 @@ int main()
 //            alien.Move(moveX);
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-            window.draw(ship.Fire());
+            ship.Fire();
 
         ///////// Ship //////////
         // Check bounds to avoid the ship getting off screen
@@ -95,7 +95,6 @@ int main()
         window.draw(ship.returnSNave());
         window.draw(alien.returnAlien());
         window.draw(alien1.returnAlien());
-        window.draw(ship.Fire());
 
         // Display the window
         window.display();

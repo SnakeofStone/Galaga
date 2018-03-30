@@ -41,8 +41,5 @@ public:
     void PrintDetails();
 
     // Fire!
-    sf::Sprite Fire();
-
-    // Set the shot initial position
-    void setShot(sf::Texture& proyectile, sf::Sprite& sProyectile);
+    void Fire();
 };
