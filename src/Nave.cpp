@@ -1,5 +1,4 @@
-#include "../headers/Nave.hpp"
-
+#include "Nave.h"
 
 Nave::Nave(std::string texturePath)
 {

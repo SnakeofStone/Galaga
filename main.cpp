@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "headers/Nave.hpp"
+#include "Nave.h"
 
 using namespace std;
 
