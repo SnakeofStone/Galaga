@@ -6,7 +6,8 @@ project(GalagaProject VERSION 0.1)
 
 
 add_subdirectory(src)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/sfml ${CMAKE_CURRENT_LIST_DIR}/sfml/build)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/sfml 
+    ${CMAKE_CURRENT_LIST_DIR}/sfml/build)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(BUILD_SHARED_LIBS FALSE)
@@ -24,6 +25,6 @@ target_link_libraries(Galaga
     Galaga_lib)
 
 add_custom_command(TARGET Galaga POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy
-    ${CMAKE_CURRENT_LIST_DIR}/assets/images/nave.png
-    ${CMAKE_CURRENT_BINARY_DIR}/assets/images/nave.png)
+	COMMAND ${CMAKE_COMMAND} -E copy_directory
+	${CMAKE_CURRENT_LIST_DIR}/assets
+	${CMAKE_CURRENT_BINARY_DIR}/assets)

@@ -1,49 +1,45 @@
 #include "Nave.h"
 
-Nave::Nave(std::string texturePath)
+Nave::Nave(
+        const sf::Texture &texturemap,
+        const sf::IntRect &rect,
+        const sf::Vector2u &windowSize)
 {
-    if(!nave.loadFromFile(texturePath))
+   sNave = sf::Sprite(texturemap, rect);
+   sNave.setPosition(
+        windowSize.x/2 - sNave.getGlobalBounds().width,
+        windowSize.y - sNave.getGlobalBounds().height
+   );
+}
+
+void Nave::Move(
+    const sf::Vector2i &move,
+    const sf::Vector2u &windowDimensions)
+{
+    if (sNave.getPosition().x + move.x < 0)
     {
-            exit(0);
+        sNave.setPosition(sf::Vector2f(
+            0,
+            sNave.getPosition().y
+        ));
     }
-    sNave.setTexture(nave);
-    posX = 720/2 - sNave.getLocalBounds().width;
-    posY = 720 - sNave.getLocalBounds().height;
+    else if (sNave.getPosition().x + sNave.getGlobalBounds().width > windowDimensions.x)
+    {
+        sNave.setPosition(sf::Vector2f(
+            windowDimensions.x - sNave.getGlobalBounds().width,
+            sNave.getPosition().y
+        ));
+    }
+    else
+    {
+        sNave.setPosition(sf::Vector2f(
+            sNave.getPosition().x + move.x,
+            sNave.getPosition().y
+        ));
+    }
 }
 
-void Nave::MovePosX(int x)
+sf::Sprite Nave::getSNave()
 {
-    posX += x;
-//    cout << posX << endl;
-}
-
-void Nave::MoveNegX(int x)
-{
-    posX -= x;
-//    cout << posX << endl;
-}
-
-sf::Sprite Nave::returnSNave()
-{
-    return Nave::sNave;
-}
-
-void Nave::setSNavePosition()
-{
-    Nave::sNave.setPosition(Nave::posX, Nave::posY);
-}
-
-void Nave::setPosX(int x)
-{
-    Nave::posX = x;
-}
-
-void Nave::checkXBounds(sf::Vector2u windowSize)
-{
-    /////// Check if it is in bounds ////////
-    if(Nave::posX < 0)
-        Nave::setPosX(0);
-
-    if(Nave::posX > windowSize.x - Nave::returnSNave().getGlobalBounds().width)
-        Nave::setPosX(windowSize.x - Nave::returnSNave().getGlobalBounds().width);
+    return sNave;
 }

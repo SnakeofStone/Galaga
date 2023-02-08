@@ -2,39 +2,37 @@
 #include <iostream>
 #include "Nave.h"
 
-using namespace std;
-
 int main()
 {
     // Initiate simple properties for later use on the creation of the main window
-    int windowDimensions[2] = {720, 720};
-    int moveX = 5;
+    sf::Vector2u windowDimensions = {720, 720};
+    int moveX = 10;
 
     // Set the configuration on the main window
-    sf::RenderWindow window(sf::VideoMode(windowDimensions[0], windowDimensions[1]), "Galaga");
+    sf::RenderWindow window(sf::VideoMode(
+                                windowDimensions.x,
+                                windowDimensions.y
+                            ), "Galaga");
     window.setFramerateLimit(60);
 
-    //////// Define and declare textures and sprites////////////
-//<<<<<<< HEAD
-    sf::Texture nave, alien1, alien2, alien3, alien4;
-    if (!nave.loadFromFile("assets/images/nave.png"))
+    sf::Texture texturemap;
+    if (!texturemap.loadFromFile("assets/images/texturemap.png"))
     {
-        // error...
-
+        // TO-DO: Add logging system
+        exit(0);
     }
 
-    sf::Sprite sNave(nave), sAlien1(alien1), sAlien2(alien2),
-        sAlien3(alien3), sAlien4(alien4);
-//=======
-//    sf::Texture alien1, alien2, alien3, alien4;
-//>>>>>>> intoClasses*/
-
     // Call the constructor of the Nave
-    // class and pass the image path
-    Nave ship("assets/images/nave.png");
-
-//    sf::Sprite sAlien1(alien1), sAlien2(alien2),
-//        sAlien3(alien3), sAlien4(alien4);
+    // class and pass the texture map image and
+    // a rectangle with the sprite coordenates
+    Nave ship(
+            texturemap,
+            sf::IntRect(
+                sf::Vector2i(0, 0),
+                sf::Vector2i(70, 76)
+            ),
+            window.getSize()
+    );
 
     ///////// Main game loop /////////
     while (window.isOpen())
@@ -52,26 +50,18 @@ int main()
         }
 
         //////////////////// Get keyboard input /////////////////////
-        ///// Moving the spaceship i the x axis ///////
-
+        // Moving the spaceship in the x axis
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            ship.MovePosX(moveX);
+            ship.Move(sf::Vector2i(moveX, 0), window.getSize());
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            ship.MoveNegX(moveX);
+            ship.Move(sf::Vector2i(-moveX, 0), window.getSize());
 
-        // Check bounds to avoid the ship getting off screen
-        ship.checkXBounds(window.getSize());
-
-        ////// Set the position of the spacecraft ////////
-        ship.setSNavePosition();
-
-        ////// Clear the window and draw and display everything /////////
+        // Clear the window and draw and display everything
         window.clear(sf::Color::Black);
 
         // Draw the Nave sprite
-        window.draw(ship.returnSNave());
-        //window.draw(shape);
+        window.draw(ship.getSNave());
 
         // Display the window
         window.display();
