@@ -2,8 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-using namespace std;
-
 class Nave
 {
 private:

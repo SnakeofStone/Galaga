@@ -4,7 +4,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 project(GalagaProject VERSION 0.1)
 
-
 add_subdirectory(src)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/sfml 
     ${CMAKE_CURRENT_LIST_DIR}/sfml/build)
@@ -12,6 +11,10 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/sfml
 set(SFML_STATIC_LIBRARIES TRUE)
 set(BUILD_SHARED_LIBS FALSE)
 set(SFML_DIR ${CMAKE_CURRENT_LIST_DIR}/sfml/build)
+
+if(SFML_OS_WINDOWS)
+    set(SFML_USE_STATIC_STD_LIBS TRUE)
+endif()
 
 find_package(SFML 
     COMPONENTS graphics
