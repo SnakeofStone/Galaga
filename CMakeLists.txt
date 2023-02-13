@@ -12,8 +12,10 @@ set(SFML_STATIC_LIBRARIES TRUE)
 set(BUILD_SHARED_LIBS FALSE)
 set(SFML_DIR ${CMAKE_CURRENT_LIST_DIR}/sfml/build)
 
+set(CMAKE_BUILD_TYPE Debug)
+
 if(SFML_OS_WINDOWS)
-    set(SFML_USE_STATIC_STD_LIBS TRUE)
+    set(SFML_GENERATE_PDB TRUE)
 endif()
 
 find_package(SFML 
@@ -28,6 +30,6 @@ target_link_libraries(Galaga
     Galaga_lib)
 
 add_custom_command(TARGET Galaga POST_BUILD
-	COMMAND ${CMAKE_COMMAND} -E copy_directory
-	${CMAKE_CURRENT_LIST_DIR}/assets
-	${CMAKE_CURRENT_BINARY_DIR}/assets)
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_CURRENT_LIST_DIR}/assets
+    ${CMAKE_CURRENT_BINARY_DIR}/assets)

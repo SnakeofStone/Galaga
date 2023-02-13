@@ -6,7 +6,7 @@ int main()
 {
     // Initiate simple properties for later use on the creation of the main window
     sf::Vector2u windowDimensions = {720, 720};
-    int moveX = 10;
+    float moveX = 10.0;
 
     // Set the configuration on the main window
     sf::RenderWindow window(sf::VideoMode(
@@ -52,16 +52,22 @@ int main()
         //////////////////// Get keyboard input /////////////////////
         // Moving the spaceship in the x axis
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            ship.Move(sf::Vector2i(moveX, 0), window.getSize());
+            ship.Move(sf::Vector2f(moveX, 0), window.getSize());
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            ship.Move(sf::Vector2i(-moveX, 0), window.getSize());
+            ship.Move(sf::Vector2f(-moveX, 0), window.getSize());
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            ship.Move(sf::Vector2f(0, -moveX), window.getSize());
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+            ship.Move(sf::Vector2f(0, moveX), window.getSize());
 
         // Clear the window and draw and display everything
         window.clear(sf::Color::Black);
 
         // Draw the Nave sprite
-        window.draw(ship.getSNave());
+        window.draw(ship.getSprite());
 
         // Display the window
         window.display();

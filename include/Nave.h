@@ -11,6 +11,6 @@ private:
 public:
     // Method declaration
     Nave(const sf::Texture &, const sf::IntRect &, const sf::Vector2u &);
-    void Move(const sf::Vector2i &, const sf::Vector2u &);
-    sf::Sprite getSNave();
+    void Move(const sf::Vector2f &, const sf::Vector2u &);
+    sf::Sprite getSprite();
 };
