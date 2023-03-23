@@ -10,13 +10,15 @@ Nave::Nave(
         (windowSize.x>>1) - sNave.getGlobalBounds().width,
         windowSize.y - sNave.getGlobalBounds().height
    );
+   this->maxSpeed = 25.0f;
+   this->velocity = sf::Vector2f(0, 0);
 }
 
 void Nave::Move(
-    const sf::Vector2f &move,
-    const sf::Vector2u &windowDimensions)
+    float delta_t,
+    const sf::Vector2u& windowDimensions)
 {
-    const sf::Vector2f newPos = sNave.getPosition() + move;
+    const sf::Vector2f newPos = sNave.getPosition() + delta_t * this->maxSpeed * this->velocity;
     if (newPos.x < 0)
     {
         sNave.setPosition(sf::Vector2f(
@@ -48,12 +50,26 @@ void Nave::Move(
     else
     {
         sNave.setPosition(sf::Vector2f(
-            sNave.getPosition() + move
+            newPos
         ));
     }
 }
 
 sf::Sprite Nave::getSprite()
 {
-    return sNave;
+    return this->sNave;
+}
+
+void Nave::setVelocity(const sf::Vector2f& direction)
+{
+    /*if (1 != std::sqrt(std::pow(direction.x, 2) + std::pow(direction.y, 2)))
+        this->velocity = sf::Vector2f(0, 0);
+
+    else*/
+        this->velocity += direction * this->maxSpeed;
+}
+
+void Nave::resetVelocity(const sf::Vector2f& direction)
+{
+    this->velocity = sf::Vector2f(0, 0);
 }
